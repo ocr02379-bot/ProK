@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProKarate.mx – Academia de Karate Profesional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --red: #D32F2F;
+      --red-dark: #B71C1C;
+      --silver: #F5F5F5;
+      --white: #FFFFFF;
+      --text: #222222;
+      --text-light: #666666;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--red);
+      padding: 20px 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: var(--white);
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    nav a.active {
+      border-bottom: 2px solid var(--white);
+      padding-bottom: 5px;
+    }
+
+    .nav-cta {
+      background: var(--white);
+      color: var(--red);
+      padding: 8px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: all 0.3s;
+    }
+
+    .nav-cta:hover {
+      background: var(--silver);
+      transform: translateY(-1px);
+    }
+
+    /* PAGE CONTAINER */
+    .page {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      padding: 80px 60px;
+      text-align: center;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      letter-spacing: 3px;
+      color: var(--white);
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: var(--silver);
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: var(--white);
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .hero-btn {
+      background: var(--white);
+      color: var(--red);
+      padding: 12px 35px;
+      border: none;
+      border-radius: 3px;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .hero-btn:hover {
+      background: var(--silver);
+      transform: translateY(-2px);
+    }
+
+    /* CONTENT SECTION */
+    .content-section {
+      padding: 70px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 42px;
+      letter-spacing: 2px;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title .red {
+      color: var(--red);
+    }
+
+    /* CARD GRID */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 2px solid var(--red);
+      border-radius: 5px;
+      padding: 25px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(211, 47, 47, 0.2);
+    }
+
+    .card-icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 1.5px;
+      color: var(--red);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .card-text {
+      font-size: 12px;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* PRICING */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+
+    .pricing-card {
+      background: var(--silver);
+      border: 2px solid var(--red);
+      border-radius: 5px;
+      padding: 35px 25px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .pricing-card.featured {
+      background: var(--red);
+      color: var(--white);
+      transform: scale(1.05);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .pricing-card.featured:hover {
+      transform: scale(1.05) translateY(-5px);
+    }
+
+    .pricing-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 1.5px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .pricing-card:not(.featured) .pricing-title {
+      color: var(--red);
+    }
+
+    .pricing-price {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .pricing-card:not(.featured) .pricing-price {
+      color: var(--red);
+    }
+
+    .pricing-card.featured .pricing-price {
+      color: var(--silver);
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 20px;
+      text-align: left;
+      font-size: 11px;
+      color: var(--text-light);
+    }
+
+    .pricing-card.featured .pricing-features {
+      color: var(--white);
+    }
+
+    .pricing-features li {
+      padding: 6px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .pricing-card.featured .pricing-features li {
+      border-bottom-color: rgba(255,255,255,0.2);
+    }
+
+    .pricing-features li::before {
+      content: '✓ ';
+      color: var(--red);
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    .pricing-card.featured .pricing-features li::before {
+      color: var(--silver);
+    }
+
+    .pricing-btn {
+      background: var(--red);
+      color: var(--white);
+      padding: 10px 25px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      width: 100%;
+      transition: all 0.3s;
+    }
+
+    .pricing-card.featured .pricing-btn {
+      background: var(--white);
+      color: var(--red);
+    }
+
+    .pricing-btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.9;
+    }
+
+    /* TABLE */
+    .table-container {
+      background: var(--silver);
+      border: 2px solid var(--red);
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 50px;
+    }
+
+    .table-row {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
+      border-bottom: 1px solid #ddd;
+      padding: 15px;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .table-row:last-child {
+      border-bottom: none;
+    }
+
+    .table-row.header {
+      background: var(--red);
+      color: var(--white);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .table-row.header:first-child {
+      border-radius: 3px 3px 0 0;
+    }
+
+    .table-cell {
+      text-align: center;
+      color: var(--text);
+    }
+
+    .table-row.header .table-cell {
+      color: var(--white);
+    }
+
+    .table-btn {
+      background: var(--red);
+      color: var(--white);
+      padding: 6px 15px;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .table-btn:hover {
+      opacity: 0.85;
+      transform: translateY(-1px);
+    }
+
+    /* FORM */
+    .form-container {
+      background: var(--silver);
+      border: 2px solid var(--red);
+      border-radius: 5px;
+      padding: 40px;
+      max-width: 600px;
+      margin: 0 auto 50px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 10px;
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 8px rgba(211, 47, 47, 0.1);
+    }
+
+    .form-submit {
+      background: var(--red);
+      color: var(--white);
+      padding: 12px 35px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      width: 100%;
+      transition: all 0.3s;
+    }
+
+    .form-submit:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: var(--red);
+      color: var(--white);
+      padding: 50px 60px;
+      text-align: center;
+      border-radius: 5px;
+      margin-bottom: 50px;
+    }
+
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .cta-section p {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .cta-btn {
+      background: var(--white);
+      color: var(--red);
+      padding: 12px 35px;
+      border: none;
+      border-radius: 3px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .cta-btn:hover {
+      background: var(--silver);
+      transform: translateY(-2px);
+    }
+
+    /* ACCORDION */
+    .accordion-item {
+      margin-bottom: 15px;
+      border: 2px solid var(--red);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      padding: 18px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .accordion-header:hover {
+      background: var(--red-dark);
+      padding-left: 25px;
+    }
+
+    .accordion-icon {
+      font-size: 16px;
+      font-weight: 900;
+      transition: transform 0.3s;
+    }
+
+    .accordion-item.active .accordion-icon {
+      transform: rotate(45deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 500px;
+    }
+
+    .accordion-body {
+      background: var(--silver);
+      padding: 25px;
+      color: var(--text);
+    }
+
+    .accordion-cta {
+      background: var(--red);
+      color: var(--white);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: 15px;
+      transition: all 0.3s;
+    }
+
+    .accordion-cta:hover {
+      background: var(--red-dark);
+      transform: translateY(-1px);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--text);
+      color: var(--white);
+      padding: 40px 60px;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
+    .footer-col h3 {
+      color: var(--silver);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .footer-col p {
+      font-size: 11px;
+      line-height: 1.7;
+      color: #aaa;
+    }
+
+    .footer-copy {
+      border-top: 1px solid #444;
+      padding-top: 20px;
+      color: #777;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 30px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 50px 30px;
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .content-section {
+        padding: 50px 30px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .table-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .table-cell {
+        text-align: left;
+      }
+
+      .table-cell::before {
+        font-weight: 700;
+        color: var(--red);
+        margin-right: 5px;
+      }
+
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+
+      .card-grid,
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 30px 20px;
+      }
+
+      .footer-content {
+        gap: 20px;
+      }
+    }
+	.card-icon img{
+  width:70px;
+  height:70px;
+  object-fit:cover;
+  margin-bottom:12px;
+}
+
+
+	.card-icon img{
+  width:80px;
+  height:80px;
+  object-fit:cover;
+  border-radius:6px;
+  margin-bottom:10px;
+}
+
+	.card-icon img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+  </style>
+</head>
+<body>
+
+																																		<!-- HEADER -->
+  <header>
+    <a class="logo" onclick="navigateTo('home'); return false;" style="display: flex; align-items: center; gap: 8px;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5OFSw4XdcwIABRPC-jQtmv3WnY3R6x7ziVA&s" alt="Logo PROKARATE" style="height: 40px;">
+        PRO<span>KARATE</span>
+    </a>
+    <nav>
+      <a class="nav-link active" onclick="navigateTo('home'); return false;">Home</a>
+      <a class="nav-link" onclick="navigateTo('karatedo'); return false;">Karate-Do</a>
+      <a class="nav-link" onclick="navigateTo('clases'); return false;">Clases</a>
+      <a class="nav-link" onclick="navigateTo('precios'); return false;">Precios</a>
+      <a class="nav-link" onclick="navigateTo('nosotros'); return false;">Nosotros</a>
+      <a class="nav-link" onclick="navigateTo('contacto'); return false;">Contacto</a>
+      <button class="nav-cta">Inscríbete</button>
+    </nav>
+</header>
+
+																																		<!-- HOME -->
+  <div id="home" class="page active">
+    <section class="hero">
+      <div>
+        <h1>Academia de<br><span>Karate</span> Profesional</h1>
+        <p>Clases para todas las edades y niveles</p>
+        <button class="hero-btn" onclick="navigateTo('clases')">Ver clases</button>
+      </div>
+    </section>
+
+    <section class="content-section">
+  <h2 class="section-title">¿Por qué <span class="red">ProKarate</span>?</h2>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="card-icon">
+        <img src="https://prokarate.mx/wp-content/uploads/2025/08/PROKARATE.png" alt="Instructores certificados">
+      </div>
+      <div class="card-title">Instructores Certificados</div>
+      <div class="card-text">Senséis avalados por la Federación Mexicana</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO-mo8Ls3X3SOxzsioXg4UFqD5IgAhJx0NIQ&s" alt="Instalaciones modernas">
+      </div>
+      <div class="card-title">Instalaciones Modernas</div>
+      <div class="card-text">Tatami oficial y equipo de protección completo</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">
+        <img src="https://senderoartesmarciales.com/wp-content/uploads/2024/08/Se-dieron-a-conocer-trofeos-para-el-2-Torneo-Hanshi-Yoshiki-Tokuyama-en-la-CDMX-2.jpg" alt="Competencias y trofeos">
+      </div>
+      <div class="card-title">Competencia Oficial</div>
+      <div class="card-text">Torneos estatales, nacionales e internacionales</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">
+        <img src="https://prokarate.mx/wp-content/uploads/2025/08/2PROkarate_escuela_de_karate_en_Cuernavaca.png" alt="Programa de entrenamiento">
+      </div>
+      <div class="card-title">Programa Estructurado</div>
+      <div class="card-text">Evaluaciones de grado y seguimiento continuo</div>
+    </div>
+
+  </div>
+</section>
+
+    <section class="content-section">
+      <h2 class="section-title">Horarios <span class="red">Destacados</span></h2>
+      <div class="table-container">
+        <div class="table-row header">
+          <div class="table-cell">Días</div>
+          <div class="table-cell">Hora</div>
+          <div class="table-cell">Nivel</div>
+          <div class="table-cell">Acción</div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">Lun / Mié / Vie</div>
+          <div class="table-cell">07:00 – 09:00</div>
+          <div class="table-cell">Principiantes</div>
+          <div class="table-cell"><button class="table-btn">Inscribir</button></div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">Mar / Jue</div>
+          <div class="table-cell">18:00 – 20:00</div>
+          <div class="table-cell">Avanzados</div>
+          <div class="table-cell"><button class="table-btn">Inscribir</button></div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">Sábados</div>
+          <div class="table-cell">10:00 – 12:00</div>
+          <div class="table-cell">Infantil</div>
+          <div class="table-cell"><button class="table-btn">Inscribir</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="cta-section">
+        <h2>¡Empieza hoy tu primera clase gratis!</h2>
+        <p>Sin compromisos. Evaluación de nivel incluida.</p>
+        <button class="cta-btn">Agenda tu clase</button>
+      </div>
+    </section>
+  </div>
+
+																																		<!-- KARATE -->
+  <div id="karatedo" class="page">
+    <section class="hero">
+      <div>
+        <h1><span>Karate</span></h1>
+        <p>Descubre nuestros programas especializados</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">Modalidades de <span class="red">Karate</span></h2>
+      <p style="text-align: center; color: var(--text-light); margin-bottom: 40px; font-size: 13px;">
+        Selecciona una categoría para conocer más detalles
+      </p>
+
+      <div style="max-width: 900px; margin: 0 auto;">
+																																		<!-- Pre Karate -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>🟢 Pre-Karate</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <h3 style="color: var(--red); margin-bottom: 10px; font-weight: 700;">Pre-Karate (3-4 años)</h3>
+              <p style="font-size: 12px; color: var(--text-light); line-height: 1.8;">
+                Introducción lúdica a los principios del karate. Enfocado en desarrollo motriz, coordinación y disciplina básica a través del juego.
+              </p>
+              <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                <div style="font-size: 11px; color: var(--red); font-weight: 700; margin-bottom: 8px;">Contenido:</div>
+                <ul style="font-size: 11px; color: var(--text-light); margin-left: 20px;">
+                  <li>Movimientos básicos adaptados a la edad</li>
+                  <li>Desarrollo de coordinación</li>
+                  <li>Disciplina y respeto</li>
+                  <li>Juegos educativos</li>
+                </ul>
+              </div>
+              <button class="accordion-cta" onclick="alert('Más información sobre Pre-Karate disponible en prokarate.mx/#PreKarate')">
+                Más información
+              </button>
+            </div>
+          </div>
+        </div>
+
+																																	<!-- Karate Kids -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>🟡 Karate Kids</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <h3 style="color: var(--red); margin-bottom: 10px; font-weight: 700;">Karate Kids (5-12 años)</h3>
+              <p style="font-size: 12px; color: var(--text-light); line-height: 1.8;">
+                Programa completo de karate para niños. Enseñanza de técnicas fundamentales, formas y combate controlado con énfasis en valores.
+              </p>
+              <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                <div style="font-size: 11px; color: var(--red); font-weight: 700; margin-bottom: 8px;">Contenido:</div>
+                <ul style="font-size: 11px; color: var(--text-light); margin-left: 20px;">
+                  <li>Kihon (técnica fundamental)</li>
+                  <li>Kata (formas)</li>
+                  <li>Kumite (combate controlado)</li>
+                  <li>Sistema de grados y cinturones</li>
+                  <li>Competencias infantiles</li>
+                </ul>
+              </div>
+              <button class="accordion-cta" onclick="alert('Más información sobre Karate Kids disponible en prokarate.mx/#karatekids')">
+                Más información
+              </button>
+            </div>
+          </div>
+        </div>
+
+																																		<!-- Adolescentes y Adultos -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>🔵 Adolescentes y Adultos</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <h3 style="color: var(--red); margin-bottom: 10px; font-weight: 700;">Adolescentes y Adultos (13+)</h3>
+              <p style="font-size: 12px; color: var(--text-light); line-height: 1.8;">
+                Entrenamiento intensivo de karate para desarrollar fuerza, resistencia y dominio técnico. Ideal para quienes buscan competencia o desarrollo personal.
+              </p>
+              <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                <div style="font-size: 11px; color: var(--red); font-weight: 700; margin-bottom: 8px;">Contenido:</div>
+                <ul style="font-size: 11px; color: var(--text-light); margin-left: 20px;">
+                  <li>Técnicas avanzadas</li>
+                  <li>Katas de competencia</li>
+                  <li>Kumite estratégico</li>
+                  <li>Preparación física</li>
+                  <li>Competencias oficiales</li>
+                </ul>
+              </div>
+              <button class="accordion-cta" onclick="alert('Más información disponible en prokarate.mx/#AdolescentesyAdultos')">
+                Más información
+              </button>
+            </div>
+          </div>
+        </div>
+
+																																					<!-- Cintas Negras -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>⬛ Cintas Negras</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <h3 style="color: var(--red); margin-bottom: 10px; font-weight: 700;">Programa Cintas Negras</h3>
+              <p style="font-size: 12px; color: var(--text-light); line-height: 1.8;">
+                Entrenamiento de élite para cintas negras. Perfeccionamiento técnico, preparación para magisterio y liderazgo en karate.
+              </p>
+              <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                <div style="font-size: 11px; color: var(--red); font-weight: 700; margin-bottom: 8px;">Contenido:</div>
+                <ul style="font-size: 11px; color: var(--text-light); margin-left: 20px;">
+                  <li>Perfeccionamiento de kata</li>
+                  <li>Kumite de alta competencia</li>
+                  <li>Formación de instructores</li>
+                  <li>Técnicas avanzadas y secretas</li>
+                  <li>Liderazgo y mentoría</li>
+                </ul>
+              </div>
+              <button class="accordion-cta" onclick="alert('Más información sobre Cintas Negras disponible en prokarate.mx/#cintasnegras')">
+                Más información
+              </button>
+            </div>
+          </div>
+        </div>
+
+																																						<!-- Equipo -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>👥 Nuestro Equipo</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <h3 style="color: var(--red); margin-bottom: 10px; font-weight: 700;">Equipo de Senséis</h3>
+              <p style="font-size: 12px; color: var(--text-light); line-height: 1.8;">
+                Contamos con instructores certificados y con amplia experiencia en la enseñanza del karate a todas las edades.
+              </p>
+              <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                <div class="card-grid" style="gap: 15px;">
+                  <div style="background: var(--silver); padding: 12px; border-radius: 3px; text-align: center;">
+                    <div style="font-size: 11px; color: var(--red); font-weight: 700;">Sensei Alejandro</div>
+                    <div style="font-size: 10px; color: var(--text-light);">5° Dan • Director</div>
+                  </div>
+                  <div style="background: var(--silver); padding: 12px; border-radius: 3px; text-align: center;">
+                    <div style="font-size: 11px; color: var(--red); font-weight: 700;">Sensei María</div>
+                    <div style="font-size: 10px; color: var(--text-light);">3° Dan • Kata</div>
+                  </div>
+                  <div style="background: var(--silver); padding: 12px; border-radius: 3px; text-align: center;">
+                    <div style="font-size: 11px; color: var(--red); font-weight: 700;">Sensei Carlos</div>
+                    <div style="font-size: 10px; color: var(--text-light);">3° Dan • Kumite</div>
+                  </div>
+                  <div style="background: var(--silver); padding: 12px; border-radius: 3px; text-align: center;">
+                    <div style="font-size: 11px; color: var(--red); font-weight: 700;">Sensei Ana</div>
+                    <div style="font-size: 10px; color: var(--text-light);">2° Dan • Infantil</div>
+                  </div>
+                </div>
+              </div>
+              <button class="accordion-cta" onclick="alert('Más información sobre el equipo disponible en prokarate.mx/#equipo')">
+                Ver perfil completo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="cta-section">
+        <h2>¿Listo para comenzar?</h2>
+        <p>Inscríbete ahora y obtén tu primera clase gratis</p>
+        <button class="cta-btn">Agendar Clase de Prueba</button>
+      </div>
+    </section>
+  </div>
+
+																																		<!-- CLASES -->
+  <div id="clases" class="page">
+    <section class="hero">
+      <div>
+        <h1>Nuestras <span>Clases</span></h1>
+        <p>Programas para todas las edades y niveles</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">Clases y <span class="red">Horarios</span></h2>
+      <div class="table-container">
+        <div class="table-row header">
+          <div class="table-cell">Días</div>
+          <div class="table-cell">Hora</div>
+          <div class="table-cell">Tipo</div>
+          <div class="table-cell">Acción</div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">Lun / Mié / Vie</div>
+          <div class="table-cell">07:00 – 09:00</div>
+          <div class="table-cell">Principiantes</div>
+          <div class="table-cell"><button class="table-btn">Inscribir</button></div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">Mar / Jue</div>
+          <div class="table-cell">18:00 – 20:00</div>
+          <div class="table-cell">Avanzados</div>
+          <div class="table-cell"><button class="table-btn">Inscribir</button></div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">Lun / Mié / Vie</div>
+          <div class="table-cell">18:00 – 19:00</div>
+          <div class="table-cell">Katas</div>
+          <div class="table-cell"><button class="table-btn">Inscribir</button></div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">Mar / Jue</div>
+          <div class="table-cell">19:00 – 20:00</div>
+          <div class="table-cell">Kumite</div>
+          <div class="table-cell"><button class="table-btn">Inscribir</button></div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">Sábados</div>
+          <div class="table-cell">10:00 – 12:00</div>
+          <div class="table-cell">Infantil</div>
+          <div class="table-cell"><button class="table-btn">Inscribir</button></div>
+        </div>
+      </div>
+
+      <h2 class="section-title" style="font-size: 28px; margin-top: 40px;">Tipos de <span class="red">Clase</span></h2>
+      <div class="card-grid">
+
+  <div class="card">
+    <div class="card-icon">
+      <img src="https://prokarate.mx/wp-content/uploads/2025/08/15PROkarate_escuela_de_karate_en_Cuernavaca.png" alt="Kihon">
+    </div>
+    <div class="card-title">Kihon</div>
+    <div class="card-text">Técnica básica de movimientos fundamentales</div>
+  </div>
+
+  <div class="card">
+    <div class="card-icon">
+      <img src="https://kiai.mx/cdn/shop/files/preview_images/674faa9a16fa4c66895f7416f9d74198.thumbnail.0000000000.jpg?v=1768948244&width=1946" alt="Kata">
+    </div>
+    <div class="card-title">Kata</div>
+    <div class="card-text">Secuencias formales de movimientos coordinados</div>
+  </div>
+
+  <div class="card">
+    <div class="card-icon">
+      <img src="https://prokarate.mx/wp-content/uploads/2025/08/7PROkarate_escuela_de_karate_en_Cuernavaca.png" alt="Kumite">
+    </div>
+    <div class="card-title">Kumite</div>
+    <div class="card-text">Combate supervisado entre practicantes</div>
+  </div>
+
+  <div class="card">
+    <div class="card-icon">
+      <img src="https://www.karatekns.com.mx/wp-content/uploads/2023/04/KNS-clases-pre-karate-ninos-cdmx-1.jpg" alt="Karate infantil">
+    </div>
+    <div class="card-title">Infantil</div>
+    <div class="card-text">Programa especial para niños 5–12 años</div>
+  </div>
+
+</div>
+    </section>
+  </div>
+
+																																		<!-- PRECIOS -->
+  <div id="precios" class="page">
+    <section class="hero">
+      <div>
+        <h1>Planes y <span>Precios</span></h1>
+        <p>Elige el plan que mejor se adapte a ti</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title" style="margin-bottom: 30px;">Planes <span class="red">Mensuales</span></h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-title">Básico</div>
+          <div class="pricing-price">$499<span style="font-size: 14px; color: var(--text-light);">/mes</span></div>
+          <ul class="pricing-features">
+            <li>2 clases por semana</li>
+            <li>Acceso al dojo</li>
+            <li>Uniforme incluido</li>
+            <li>Evaluación inicial</li>
+          </ul>
+          <button class="pricing-btn">Inscribirme</button>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="pricing-title">Estándar</div>
+          <div class="pricing-price">$799<span style="font-size: 14px;">/mes</span></div>
+          <ul class="pricing-features">
+            <li>4 clases por semana</li>
+            <li>Acceso al dojo</li>
+            <li>Uniforme incluido</li>
+            <li>Material de estudio</li>
+            <li>Asesoría personal</li>
+          </ul>
+          <button class="pricing-btn">Inscribirme</button>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-title">Premium</div>
+          <div class="pricing-price">$1,199<span style="font-size: 14px; color: var(--text-light);">/mes</span></div>
+          <ul class="pricing-features">
+            <li>Clases ilimitadas</li>
+            <li>Acceso al dojo</li>
+            <li>Uniforme incluido</li>
+            <li>Material de estudio</li>
+            <li>Competencias incluidas</li>
+          </ul>
+          <button class="pricing-btn">Inscribirme</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title" style="margin-bottom: 30px;">Planes <span class="red">Anuales</span></h2>
+      <p style="text-align: center; color: var(--text-light); margin-bottom: 30px; font-size: 13px;">
+        Ahorra 15% pagando anualmente
+      </p>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-title">Básico Anual</div>
+          <div style="font-size: 20px; color: var(--red); font-weight: 700; margin: 10px 0;">$5,093</div>
+          <div class="card-text" style="font-size: 11px;">en lugar de $5,988</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Estándar Anual</div>
+          <div style="font-size: 20px; color: var(--red); font-weight: 700; margin: 10px 0;">$8,139</div>
+          <div class="card-text" style="font-size: 11px;">en lugar de $9,588</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Premium Anual</div>
+          <div style="font-size: 20px; color: var(--red); font-weight: 700; margin: 10px 0;">$12,189</div>
+          <div class="card-text" style="font-size: 11px;">en lugar de $14,388</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+																																		<!-- NOSOTROS -->
+  <div id="nosotros" class="page">
+    <section class="hero">
+      <div>
+        <h1>Nuestra <span>Historia</span></h1>
+        <p>Fundada en 2005, somos referencia en Karate profesional</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">Quiénes <span class="red">Somos</span></h2>
+      <div class="card-grid" style="max-width: 900px; margin: 0 auto 50px;">
+        <div class="card">
+          <div class="card-title">Misión</div>
+          <div class="card-text">Formar atletas íntegros a través del Karate-Do, promoviendo disciplina, respeto y excelencia.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Visión</div>
+          <div class="card-text">Ser la academia de karate de referencia en México, reconocida por su nivel competitivo y formación humana.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Valores</div>
+          <div class="card-text">Disciplina · Respeto · Perseverancia · Lealtad · Integridad</div>
+        </div>
+      </div>
+
+      <h2 class="section-title" style="font-size: 28px;">Nuestro <span class="red">Equipo</span></h2>
+      <div class="card-grid">
+
+  <div class="card">
+    <div class="card-icon">
+      <img src="https://chishikijudo.com/wp-content/uploads/2024/03/5-dan-1.jpg" alt="Sensei Alejandro">
+    </div>
+    <div class="card-title">Sensei Alejandro</div>
+    <div class="card-text">
+      Director | 5° Dan<br>
+      <span style="font-size: 10px; color: #999;">25+ años de experiencia</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-icon">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqJDow1gabqUmC-xYp5L-m8Qfs1K66tWHOOA&s" alt="Sensei María">
+    </div>
+    <div class="card-title">Sensei María</div>
+    <div class="card-text">
+      Instructora | 3° Dan<br>
+      <span style="font-size: 10px; color: #999;">Campeona nacional de Kata</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-icon">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqJDow1gabqUmC-xYp5L-m8Qfs1K66tWHOOA&s" alt="Sensei Carlos">
+    </div>
+    <div class="card-title">Sensei Carlos</div>
+    <div class="card-text">
+      Instructor | 3° Dan<br>
+      <span style="font-size: 10px; color: #999;">Especialista en Kumite</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-icon">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2akCygEB81noC1Y2ennr5zOnVpn1WWs-rOA&s" alt="Sensei Ana">
+    </div>
+    <div class="card-title">Sensei Ana</div>
+    <div class="card-text">
+      Instructora | 2° Dan<br>
+      <span style="font-size: 10px; color: #999;">Especialista infantil</span>
+    </div>
+  </div>
+
+</div>
+
+      <h2 class="section-title" style="font-size: 28px; margin-top: 40px;">Nuestra <span class="red">Trayectoria</span></h2>
+      <div class="card-grid">
+        <div class="card">
+          <div style="font-size: 24px; color: var(--red); font-weight: 700; margin-bottom: 8px;">2005</div>
+          <div class="card-text">Fundación del dojo ProKarate</div>
+        </div>
+        <div class="card">
+          <div style="font-size: 24px; color: var(--red); font-weight: 700; margin-bottom: 8px;">2010</div>
+          <div class="card-text">Primer campeón nacional</div>
+        </div>
+        <div class="card">
+          <div style="font-size: 24px; color: var(--red); font-weight: 700; margin-bottom: 8px;">2015</div>
+          <div class="card-text">Apertura sede norte</div>
+        </div>
+        <div class="card">
+          <div style="font-size: 24px; color: var(--red); font-weight: 700; margin-bottom: 8px;">2024</div>
+          <div class="card-text">20 años de excelencia</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+																																		<!-- CONTACTO -->
+  <div id="contacto" class="page">
+    <section class="hero">
+      <div>
+        <h1>Ponte en <span>Contacto</span></h1>
+        <p>Estamos aquí para ayudarte a empezar</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">Contáctanos</h2>
+      <form class="form-container">
+        <div class="form-group">
+          <label>Nombre Completo</label>
+          <input type="text" required>
+        </div>
+        <div class="form-group">
+          <label>Correo Electrónico</label>
+          <input type="email" required>
+        </div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" required>
+        </div>
+        <div class="form-group">
+          <label>Mensaje</label>
+          <textarea rows="5" required></textarea>
+        </div>
+        <button class="form-submit">Enviar Mensaje</button>
+      </form>
+
+      <h2 class="section-title" style="font-size: 28px; margin-top: 40px;">Información de <span class="red">Contacto</span></h2>
+      <div class="card-grid" style="max-width: 900px; margin: 0 auto; display: flex; gap: 20px; justify-content: center;">
+  
+  <div class="card" style="text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 10px; width: 200px;">
+    <div class="card-icon">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Google_Maps_icon_%282020%29.svg/960px-Google_Maps_icon_%282020%29.svg.png" alt="Ubicación" style="width:50px; height:50px;">
+    </div>
+    <div class="card-title" style="font-weight: bold; margin-top: 10px;">Ubicación</div>
+    <div class="card-text" style="font-size: 14px; color: #555;">
+      Av. Principal 123<br>Col. Centro<br>Ciudad de México, CDMX
+    </div>
+  </div>
+
+  <div class="card" style="text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 10px; width: 200px;">
+    <div class="card-icon">
+      <img src="https://cdn-icons-png.flaticon.com/512/5323/5323603.png" alt="Teléfono" style="width:50px; height:50px;">
+    </div>
+    <div class="card-title" style="font-weight: bold; margin-top: 10px;">Teléfono</div>
+    <div class="card-text" style="font-size: 14px; color: #555;">
+      <strong>(55) 1234-5678</strong><br>Lun–Vie: 07:00–21:00<br>Sáb: 09:00–14:00
+    </div>
+  </div>
+
+  <div class="card" style="text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 10px; width: 200px;">
+    <div class="card-icon">
+      <img src="https://images.seeklogo.com/logo-png/38/2/gmail-new-2020-logo-png_seeklogo-389043.png" alt="Email" style="width:50px; height:50px;">
+    </div>
+    <div class="card-title" style="font-weight: bold; margin-top: 10px;">Email</div>
+    <div class="card-text" style="font-size: 14px; color: #555;">
+      <strong><a href="mailto:correo@ejemplo.com">correo@ejemplo.com</a></strong><br>Responde en 24 horas
+    </div>
+  </div>
+
+</div>
+
+      <h2 class="section-title" style="font-size: 28px; margin-top: 40px;">Síguenos en <span class="red">Redes</span></h2>
+      <div class="card-grid" style="max-width: 600px; margin: 0 auto; display: flex; gap: 20px; justify-content: center;">
+  <div class="card" style="text-align: center; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+    <div class="card-icon">
+      <img src="https://images.vexels.com/media/users/3/223136/isolated/preview/984f500cf9de4519b02b354346eb72e0-icono-de-facebook-redes-sociales.png" alt="Facebook" style="width: 50px; height: 50px;">
+    </div>
+    <div class="card-title" style="font-weight: bold; margin-top: 10px;">Facebook</div>
+    <div class="card-text">@ProKarateMX</div>
+  </div>
+
+  <div class="card" style="text-align: center; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+    <div class="card-icon">
+      <img src="https://marketplace.canva.com/9h6qU/MAElfZ9h6qU/1/tl/canva-MAElfZ9h6qU.png" alt="Instagram" style="width: 50px; height: 50px;">
+    </div>
+    <div class="card-title" style="font-weight: bold; margin-top: 10px;">Instagram</div>
+    <div class="card-text">@prokarate_mx</div>
+  </div>
+
+  <div class="card" style="text-align: center; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+    <div class="card-icon">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube" style="width: 50px; height: 50px;">
+    </div>
+    <div class="card-title" style="font-weight: bold; margin-top: 10px;">YouTube</div>
+    <div class="card-text">ProKarate MX</div>
+  </div>
+</div>
+    </section>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    function navigateTo(pageName) {
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      document.getElementById(pageName).classList.add('active');
+      
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.textContent.trim().toLowerCase() === pageName.toLowerCase() ||
+            (pageName === 'home' && link.textContent.trim() === 'Home') ||
+            (pageName === 'karatedo' && link.textContent.includes('Karate')) ||
+            (pageName === 'clases' && link.textContent.includes('Clases')) ||
+            (pageName === 'precios' && link.textContent.includes('Precios')) ||
+            (pageName === 'nosotros' && link.textContent.includes('Nosotros')) ||
+            (pageName === 'contacto' && link.textContent.includes('Contacto'))) {
+          link.classList.add('active');
+        }
+      });
+
+      window.scrollTo(0, 0);
+    }
+
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('¡Gracias por tu mensaje! Nos pondremos en contacto pronto.');
+      e.target.reset();
+    });
+
+    function toggleAccordion(button) {
+      const item = button.closest('.accordion-item');
+      const isActive = item.classList.contains('active');
+      
+      document.querySelectorAll('.accordion-item').forEach(el => {
+        el.classList.remove('active');
+      });
+      
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+  </script>
+
+</body>
+</html>
